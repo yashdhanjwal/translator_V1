@@ -1,13 +1,13 @@
-# Deployment Guide for Hostinger
+# Deployment Guide for Hostingial
 
-This guide explains how to deploy the "Free Online Tools by Yash Dhanjwal" website to your Hostinger domain (`https://ft1.yashdhanjwal.com`).
+This guide explains how to deploy the "Free Online Tools by Yash Dhanjwal" website to your Hostingial domain (`https://ft1.yashdhanjwal.com`).
 
-## Option 1: Static Export (Recommended for Shared Hosting)
+## Recommended Method: Static Export
 
-Since this project uses client-side APIs for translation and dictionary lookups, it can be deployed as a static site. This is the simplest and fastest method for Hostinger Shared or Cloud hosting.
+Since this project uses client-side APIs for translation and dictionary lookups, it can be deployed as a static site. This is the most compatible method for most hosting plans on Hostingial.
 
 ### 1. Update `next.config.ts`
-Modify `next.config.ts` to include the export output:
+Ensure `next.config.ts` is configured for static export:
 
 ```typescript
 import type { NextConfig } from "next";
@@ -15,65 +15,49 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true,
   },
 };
 
 export default nextConfig;
 ```
 
-### 2. Build the Project
-Run the following command in your terminal:
+### 2. Generate the Build
+In your local development environment, run:
 ```bash
 npm run build
 ```
-This will create an `out` folder in your project root.
+This command will create a folder named **`out`** in your project root. This folder contains all the HTML, CSS, and JS files needed for your website.
 
-### 3. Upload to Hostinger
-1. Log in to your **Hostinger hPanel**.
-2. Go to **File Manager**.
-3. Navigate to the `public_html` directory (or your subdomain folder).
-4. Upload all the contents of the `out` folder directly into `public_html`.
-
----
-
-## Option 2: Node.js Hosting (For VPS or Specialized Node.js Plans)
-
-If you are using a Hostinger VPS or a specialized Node.js plan:
-
-### 1. Upload Source Code
-Upload the entire project folder (excluding `node_modules` and `.next`) to your server via FTP or Git.
-
-### 2. Install Dependencies & Build
-On your server terminal:
-```bash
-npm install
-npm run build
-```
-
-### 3. Start with PM2
-To keep the application running in the background:
-```bash
-npm install -g pm2
-pm2 start npm --name "online-tools" -- start
-pm2 save
-```
-
-### 4. Reverse Proxy
-Configure your server (Nginx/Apache) to proxy requests from your domain to `http://localhost:3000`.
+### 3. Upload to Hostingial
+1. Log in to your **Hostingial Control Panel**.
+2. Locate the **File Manager**.
+3. Navigate to the directory for your subdomain: `ft1.yashdhanjwal.com` (usually under `public_html/ft1` or similar).
+4. **Important:** Delete any existing files in that folder to ensure a clean install.
+5. Upload the **contents** of the local `out` folder into the server directory.
+   *   **Tip:** It is faster to compress the contents of the `out` folder into a `.zip` file, upload the zip, and use the "Extract" feature in the File Manager.
 
 ---
 
-## Final Steps (For Both Options)
+## Alternative: Node.js Deployment (If supported)
 
-### 1. Connect Domain
-Ensure your DNS records for `ft1.yashdhanjwal.com` are pointing to your Hostinger server IP.
+If your Hostingial plan supports Node.js applications directly:
 
-### 2. Enable SSL
-In Hostinger hPanel, go to the **SSL** section and install a free Lifetime SSL certificate for your domain.
+### 1. Upload Source
+Upload your project files (excluding `node_modules` and `.next`).
 
-### 3. Environment Variables
-If you decide to use paid API keys in the future (e.g., DeepL or Google Cloud), add them to a `.env.production` file and update `src/lib/api.ts` to reference `process.env`.
+### 2. Setup Node.js App
+1. Use the **Setup Node.js App** tool in your control panel.
+2. Select the Node.js version (20 or 22 recommended).
+3. Set the Application Root to your project folder.
+4. Set the Application URL to `ft1.yashdhanjwal.com`.
+5. Run `npm install` and `npm run build` using the terminal or console provided by the panel.
+
+---
+
+## Final Verification
+1. **SSL Certificate:** Ensure you have an SSL certificate active for `ft1.yashdhanjwal.com` to enable HTTPS.
+2. **Browse:** Visit your site at `https://ft1.yashdhanjwal.com`.
 
 ---
 Created by Yash Dhanjwal
