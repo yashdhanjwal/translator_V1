@@ -17,6 +17,7 @@ interface HistoryItem {
 }
 
 export function Translator() {
+  const MAX_CHARS = 5000;
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
   const [fromLang, setFromLang] = useState("auto");
@@ -140,7 +141,7 @@ export function Translator() {
             <textarea
               placeholder="Enter text here..."
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
+              onChange={(e) => setInputText(e.target.value.slice(0, MAX_CHARS))}
               className="w-full h-40 md:h-60 bg-transparent resize-none focus:outline-none text-lg"
             />
 
@@ -171,7 +172,9 @@ export function Translator() {
               >
                 <Volume2 size={20} />
               </button>
-              <span className="text-xs text-muted-foreground">{inputText.length} characters</span>
+              <span className={`text-xs ${inputText.length >= MAX_CHARS ? 'text-red-500 font-bold' : 'text-muted-foreground'}`}>
+                {inputText.length} / {MAX_CHARS}
+              </span>
             </div>
             {inputText && (
               <button

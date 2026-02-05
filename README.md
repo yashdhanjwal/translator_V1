@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Free Online Tools by Yash Dhanjwal
 
-## Getting Started
+A professional, fast, and SEO-optimized Translator & Dictionary web application. Inspired by the clean and minimal UI/UX style of Supertext.
 
-First, run the development server:
+🌐 **Live Demo:** [ft1.yashdhanjwal.com](https://ft1.yashdhanjwal.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🌍 Translator Tool
+- **Real-time Translation:** powered by reliable translation APIs.
+- **100+ Languages:** Support for a wide range of global languages.
+- **Auto-detection:** Intelligent source language detection.
+- **Text-to-Speech:** Listen to translations in native accents.
+- **Copy & Clear:** Easy text management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📘 Dictionary Tool
+- **Detailed Definitions:** Comprehensive word meanings and parts of speech.
+- **Synonyms & Antonyms:** Expand your vocabulary effortlessly.
+- **Audio Pronunciation:** Hear how words are pronounced.
+- **Example Sentences:** Contextual usage for better understanding.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🎨 Design & UX
+- **Modern & Minimal:** Clean layout with smooth Framer Motion animations.
+- **Responsive:** Fully optimized for Mobile, Tablet, and Desktop.
+- **Dark Mode:** Easy on the eyes with a dedicated dark theme.
 
-## Learn More
+## 🛠️ Tech Stack
+- **Frontend:** Next.js 15 (App Router), TypeScript, Tailwind CSS 4.
+- **Animations:** Framer Motion.
+- **Icons:** Lucide React.
+- **Theming:** next-themes.
 
-To learn more about Next.js, take a look at the following resources:
+## 📥 Local Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run this project locally on your machine:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd translator-v1
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Open in browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000).
+
+## 🚢 Deployment
+
+For detailed instructions on how to deploy this project to Hostingial (or any cPanel-based hosting), please refer to [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+## 🧑‍💼 About the Author
+
+**Yash Dhanjwal**
+B.Tech Student | New Delhi, India
+- 🌐 Website: [yashdhanjwal.com](https://www.yashdhanjwal.com)
+- 📧 Email: info@yashdhanjwal.com
+- 📱 Mobile: +91 87663 56943
+- 💬 WhatsApp: +91 99900 33043
+
+---
+© 2026 Free Online Tools by Yash Dhanjwal. All rights reserved.

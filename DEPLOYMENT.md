@@ -22,8 +22,12 @@ export default nextConfig;
 ```
 
 ### 2. Build Locally
-On your computer terminal, run:
+On your computer terminal, run these commands in order:
 ```bash
+# 1. Install dependencies (Crucial step!)
+npm install
+
+# 2. Create the production build
 npm run build
 ```
 This will create a folder named **`out`**.
@@ -44,8 +48,12 @@ If you must use the cPanel Node.js Selector, follow these steps to bypass the me
 
 ### 1. Build Standalone Locally
 Ensure `output: 'standalone'` is in your `next.config.ts`.
-On your computer, run:
+On your computer, run these commands in order:
 ```bash
+# 1. Install dependencies (Crucial step!)
+npm install
+
+# 2. Create the production build
 npm run build
 ```
 Next.js will create a folder at **`.next/standalone`**.
