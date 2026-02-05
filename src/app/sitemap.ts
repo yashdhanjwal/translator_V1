@@ -1,4 +1,7 @@
 import { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://ft1.yashdhanjwal.com";
   return [

@@ -23,8 +23,11 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 
   const setValue = useCallback((newValue: T | ((val: T) => T)) => {
     try {
-      const valueToStore = newValue instanceof Function ? newValue(value) : newValue;
       if (typeof window !== "undefined") {
+        const currentItem = window.localStorage.getItem(key);
+        const currentValue = currentItem ? JSON.parse(currentItem) : initialValue;
+        const valueToStore = newValue instanceof Function ? newValue(currentValue) : newValue;
+
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
         // Dispatch a local storage event so other tabs/hooks can update
         window.dispatchEvent(new Event("storage"));
@@ -32,7 +35,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     } catch (error) {
       console.error(error);
     }
-  }, [key, value]);
+  }, [key, initialValue]);
 
   return [value, setValue] as const;
 }
