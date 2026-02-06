@@ -101,8 +101,8 @@ export function Translator() {
       animate={{ opacity: 1, y: 0 }}
       className="w-full max-w-5xl mx-auto p-4 md:p-6 space-y-6"
     >
-      <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border overflow-hidden">
-        <div className="flex items-center justify-between border-b px-4 py-3 bg-zinc-50 dark:bg-zinc-800/50">
+      <div className="bg-card text-card-foreground rounded-2xl shadow-xl border overflow-hidden">
+        <div className="flex items-center justify-between border-b px-4 py-3 bg-muted/30">
           <div className="flex items-center gap-2 flex-1">
             <select
               value={fromLang}
@@ -110,7 +110,7 @@ export function Translator() {
               className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer hover:text-brand-primary"
             >
               {languages.map((l) => (
-                <option key={l.code} value={l.code} className="dark:bg-zinc-900">{l.name}</option>
+                <option key={l.code} value={l.code} className="bg-card text-card-foreground">{l.name}</option>
               ))}
             </select>
           </div>
@@ -118,7 +118,7 @@ export function Translator() {
           <button
             onClick={swapLanguages}
             disabled={fromLang === "auto"}
-            className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full transition-colors disabled:opacity-30"
+            className="p-2 hover:bg-muted rounded-full transition-colors disabled:opacity-30"
           >
             <ArrowLeftRight size={18} />
           </button>
@@ -130,7 +130,7 @@ export function Translator() {
               className="bg-transparent text-sm font-medium focus:outline-none cursor-pointer hover:text-brand-primary"
             >
               {languages.filter(l => l.code !== "auto").map((l) => (
-                <option key={l.code} value={l.code} className="dark:bg-zinc-900">{l.name}</option>
+                <option key={l.code} value={l.code} className="bg-card text-card-foreground">{l.name}</option>
               ))}
             </select>
           </div>
@@ -142,7 +142,7 @@ export function Translator() {
               placeholder="Enter text here..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value.slice(0, MAX_CHARS))}
-              className="w-full h-40 md:h-60 bg-transparent resize-none focus:outline-none text-lg"
+              className="w-full h-40 md:h-60 bg-transparent resize-none focus:outline-none text-lg text-foreground placeholder:text-muted-foreground"
             />
 
             <AnimatePresence>
@@ -151,7 +151,7 @@ export function Translator() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm flex items-start gap-2 text-blue-700 dark:text-blue-300"
+                  className="mt-2 p-2 bg-blue-500/10 rounded-lg text-sm flex items-start gap-2 text-blue-600 dark:text-blue-400"
                 >
                   <AlertCircle size={16} className="mt-0.5 shrink-0" />
                   <div>
@@ -168,7 +168,7 @@ export function Translator() {
               <button
                 onClick={() => speak(inputText, fromLang)}
                 disabled={!inputText}
-                className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors disabled:opacity-30"
+                className="p-2 hover:bg-muted rounded-full transition-colors disabled:opacity-30"
               >
                 <Volume2 size={20} />
               </button>
@@ -179,36 +179,37 @@ export function Translator() {
             {inputText && (
               <button
                 onClick={() => setInputText("")}
-                className="absolute top-4 right-4 p-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors"
+                className="absolute top-4 right-4 p-1 hover:bg-muted rounded-full transition-colors"
               >
                 <X size={16} />
               </button>
             )}
           </div>
 
-          <div className="relative p-4 md:p-6 bg-zinc-50/50 dark:bg-zinc-800/20">
-            {isLoading ? (
-              <div className="flex items-center justify-center h-40 md:h-60">
-                <Loader2 className="animate-spin text-brand-primary" size={32} />
-              </div>
-            ) : (
-              <div className="w-full h-40 md:h-60 text-lg overflow-auto whitespace-pre-wrap">
-                {outputText || <span className="text-muted-foreground italic">Translation will appear here...</span>}
+          <div className="relative p-4 md:p-6 bg-muted/10">
+            <div className={`w-full h-40 md:h-60 text-lg overflow-auto whitespace-pre-wrap`}>
+              {outputText || <span className="text-muted-foreground italic">Translation will appear here...</span>}
+            </div>
+
+            {isLoading && (
+              <div className="absolute top-4 right-4">
+                <Loader2 className="animate-spin text-brand-primary" size={20} />
               </div>
             )}
+
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => speak(outputText, toLang)}
                   disabled={!outputText}
-                  className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors disabled:opacity-30"
+                  className="p-2 hover:bg-muted rounded-full transition-colors disabled:opacity-30"
                 >
                   <Volume2 size={20} />
                 </button>
                 <button
                   onClick={copyToClipboard}
                   disabled={!outputText}
-                  className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors disabled:opacity-30 relative"
+                  className="p-2 hover:bg-muted rounded-full transition-colors disabled:opacity-30 relative"
                 >
                   {copied ? <Check size={20} className="text-brand-primary" /> : <Copy size={20} />}
                 </button>

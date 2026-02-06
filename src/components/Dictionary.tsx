@@ -84,14 +84,14 @@ export function Dictionary() {
       transition={{ delay: 0.1 }}
       className="w-full max-w-5xl mx-auto p-4 md:p-6 space-y-6"
     >
-      <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border p-6 md:p-8">
+      <div className="bg-card text-card-foreground rounded-2xl shadow-xl border p-6 md:p-8">
         <form onSubmit={handleSearch} className="relative mb-8">
           <input
             type="text"
             placeholder="Search for a word..."
             value={word}
             onChange={(e) => setWord(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 rounded-xl border bg-zinc-50 dark:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-brand-primary text-lg"
+            className="w-full pl-12 pr-4 py-4 rounded-xl border bg-muted/30 focus:outline-none focus:ring-2 focus:ring-brand-primary text-lg text-foreground"
           />
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
           <button
@@ -138,7 +138,7 @@ export function Dictionary() {
                 </div>
                 <button
                   onClick={() => toggleBookmark(result.word)}
-                  className={`p-3 rounded-xl border transition-colors ${bookmarks.includes(result.word) ? 'bg-brand-primary text-white border-brand-primary' : 'hover:bg-zinc-100 dark:hover:bg-zinc-800'}`}
+                  className={`p-3 rounded-xl border transition-colors ${bookmarks.includes(result.word) ? 'bg-brand-primary text-white border-brand-primary' : 'hover:bg-muted'}`}
                 >
                   <Bookmark size={24} fill={bookmarks.includes(result.word) ? "currentColor" : "none"} />
                 </button>
@@ -197,7 +197,7 @@ export function Dictionary() {
                 {history.length > 0 ? (
                   <div className="flex flex-wrap gap-2">
                     {history.map(h => (
-                      <button key={h} onClick={() => { setWord(h); handleSearch(undefined, h); }} className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full hover:bg-brand-primary/10 transition-colors capitalize">
+                      <button key={h} onClick={() => { setWord(h); handleSearch(undefined, h); }} className="px-3 py-1 bg-muted rounded-full hover:bg-brand-primary/10 transition-colors capitalize">
                         {h}
                       </button>
                     ))}
@@ -211,7 +211,7 @@ export function Dictionary() {
                 {bookmarks.length > 0 ? (
                   <div className="flex flex-wrap gap-2">
                     {bookmarks.map(b => (
-                      <button key={b} onClick={() => { setWord(b); handleSearch(undefined, b); }} className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full hover:bg-brand-primary/10 transition-colors capitalize">
+                      <button key={b} onClick={() => { setWord(b); handleSearch(undefined, b); }} className="px-3 py-1 bg-muted rounded-full hover:bg-brand-primary/10 transition-colors capitalize">
                         {b}
                       </button>
                     ))}
